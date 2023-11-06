@@ -1,0 +1,26 @@
+int rood;
+int groen;
+int blauw;
+
+void setup (){
+  size (2000,2000);
+  rood = 0;
+  groen =0;
+  blauw =0;
+}
+void draw (){
+  fill (rood,groen,blauw);
+  ellipse (mouseX,mouseY,200,200);
+  rood = rood +5;
+  groen = groen +1;
+  blauw = blauw +2;
+  if(rood==255){
+    rood=0;
+  }
+  if (groen==255){
+      groen = 0;
+  }
+  if (blauw==256){
+      blauw = 0;
+  }
+}
