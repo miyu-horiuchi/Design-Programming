@@ -1,0 +1,54 @@
+String[] verso1 = {
+  "I",
+  "We",
+  "A dog",
+	};
+
+
+
+String[] verso2 = {
+  "get",
+  "become",
+  "is"
+};
+
+String[] verso3 = {
+  "mad",
+  "hungry",
+  "happy",
+};
+
+String[] verso4 = {
+  "and",
+  "or",
+  "and also"};
+String[] verso5 = {
+  "screamed",
+  "ate",
+  "danced"};
+String[] verso6 = {
+  "YES",
+  "ice cream",
+  "michael jackson"};
+
+void setup() {
+  size(800,800);
+  //framerate(1);
+  //background(100);
+
+}
+
+void draw() {
+	PFont f;
+	f = createFont("Times New Roman",32);
+	textFont(f);
+  textSize(20);
+  background(156,100,50);
+  fill(255);
+  text(verso1[int(mouseX/10%3)],100,100);
+  text(verso2[int(mouseX/10%3)],100,200);
+  text(verso3[int(mouseX/10%3)],100,300);
+  text(verso4[int(mouseX/10%3)],100,400);
+  text(verso5[int(mouseX%3)],100,500)
+  text(verso6[int(mouseX%3)],100,600);
+}
