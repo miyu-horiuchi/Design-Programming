@@ -1,0 +1,56 @@
+PImage pic;
+PImage pic2;
+PImage pic3;
+PImage pic4; 
+PImage pic5; 
+
+void setup() {
+  size(876, 770);
+  frameRate(999);
+  pic = loadImage("pic.png");
+  pic2 = loadImage("pic2.jpg");
+  pic3 = loadImage("pic3.jpg");
+  pic4 = loadImage("pic4.jpg");
+  pic5 = loadImage("pic5.jpg");
+     
+  background(0);
+}
+
+void draw() { 
+  int r = (int) 1;
+  for (int i = 0; i < 50; i++) {
+    float x = random(width);
+    float y = random(height);
+    color c = pic5.get(int(x), int(y));
+    noStroke();
+    fill(c);
+    ellipse(x, y,r, r);
+    x = random(width);
+    y = random(height);
+    c = pic3.get(int(x), int(y));
+    noStroke();
+    fill(c);
+    ellipse(x, y,r, r);
+    x = random(width);
+    y = random(height);
+    c = pic4.get(int(x), int(y));
+    noStroke();
+    fill(c);
+    ellipse(x, y,r, r);
+    x = random(width);
+    y = random(height);
+    c = pic.get(int(x), int(y));
+    noStroke();
+    fill(c);
+    ellipse(x, y,r, r);
+    x = random(width);
+    y = random(height);
+    c = pic2.get(int(x), int(y));
+    noStroke();
+    fill(c);
+    ellipse(x, y,r, r);
+    x = random(width);
+    y = random(height);
+
+  }
+}
