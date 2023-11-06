@@ -1,0 +1,26 @@
+function setup() {
+	createCanvas(windowWidth, windowHeight);
+	background(100);
+
+}
+int x;
+int y;
+
+void setup(){ 
+  size(500,500);
+  frameRate(1);
+  
+}
+
+void draw() {
+  background(0);
+  x= (int)random(width);
+  y= (int)random(height);
+  
+  ellipse(x,y,100,100);
+  
+}
+
+function draw() {
+	ellipse(mouseX, mouseY, 20, 20);
+}
