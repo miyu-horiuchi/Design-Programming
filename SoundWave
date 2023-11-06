@@ -1,0 +1,61 @@
+//騒音の可視化
+
+/*
+1. プログラミングを利用したことで、独自のデザインを自由に取り入れることができ、デザイン範囲が広がった。また、微妙な色やサイズも変化させることができたのでユニークな作品を作れるこto
+とが出来たと思う.　random()を使うことで"visually aesthetic"な点を含めることが出来た。
+2. 使用コード：
+	https://p5js.org/examples/sound-mic-input.htmlのaudio input部分
+	
+	https://p5js.org/examples/sound-frequency-spectrum.htmlのFFT部分
+
+
+*/
+
+
+function setup() {
+	createCanvas(windowWidth, windowHeight); 
+	souon = new p5.AudioIn();      //「サウンド」
+	souon.start(); 
+	oto = new p5.FFT(); 
+	souon.connect(oto); 
+
+}
+
+function draw() {
+
+	background(0,255,0); //green background
+
+	var iro = oto.analyze();
+
+	noStroke();
+	
+  var c1 = random(255);
+	var c2 = random(255);
+	var c3 = random(255);
+	fill(c1, c2, c3);
+	
+	
+	
+	
+	for (var a = 0; a < iro.length; a += 30) {     //「配列」
+		var b = map(a, 0, iro.length, 0, width); 
+		var c = -height + map(iro[a], 0, 255, height, 0); 
+		rect(b, height, (width / iro.length) * 10, c/2.5 ); 
+		rect(windowWidth - b, windowHeight- height, (width / iro.length) * 10, -c/2.5); 
+	}
+	var naminami = oto.waveform(); 
+	noFill();
+	beginShape();
+	stroke(c1, c2, c3);
+	strokeWeight(10); //make the line smoother and thicker
+	
+	for (var i = 0; i < naminami.length; i += 10) {  //「繰り返し、反復とパターン」
+		var q = map(i, 0, naminami.length, 0, width);
+		var w = map(naminami[i] / 2, -1, 1, 0, height);
+		vertex(q, w);
+	}
+	endShape();
+
+
+	
+}
