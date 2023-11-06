@@ -1,0 +1,89 @@
+float time = 0, elapsedTime = 0, timeStamp = 0;
+int state = 0, point = 0, best;
+float start = 3.0, push = 5.0; 
+PFont f;
+float x, y, angle;
+String heart="♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡";
+
+
+void setup() {
+    size(800, 500);
+    rectMode(CENTER);
+    noStroke();
+    f = createFont("Dialog.plain", 20);
+    textFont(f);
+    textAlign(CENTER, TOP);
+    state = 2;
+    frameRate(20);
+    smooth();  
+}
+
+
+void draw() {
+    elapsedTime = float(millis()) / 1000;
+    time = elapsedTime - timeStamp;
+    background(255, 204, 0);
+     fill(255,0,0);
+    switch (state) {
+				
+    case 0:    
+        text("Start in " + int(start - time + 1) + " sec Click your mouse as much as possible!", width / 2, 20);
+        if (time >= start) {
+            state = 1;
+            timeStamp = elapsedTime;  
+            time = elapsedTime - timeStamp;
+        }
+        break;
+				
+    case 1:
+  for (int i = 0; i < 1; i++) {
+			angle += 0.02;
+			x = sin(angle) * 100;
+			y = cos(angle) * 100;
+
+			pushMatrix();
+			translate(300, 300);
+			scale(1.8 +  sin(angle * 5));  
+
+				 int w = (int)random(10, 50);
+				 int h = (int)random(10, 15);
+				 int c = (int)random(0, 255);
+				 textSize((w + h) / 8);
+				 fill(255,0,0);
+				 text(heart, x, y, w, h);
+        text("♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡");
+        text("♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡♡");
+	}
+        if (time >= push) {
+            state = 2;
+            timeStamp = elapsedTime;
+            time = elapsedTime - timeStamp;
+            if (point >= best) {
+                best = point;
+            }
+        }
+        break;
+				
+    case 2:
+        text("Score: " + point, width / 2, 20);
+        text("Best Score: " + best, width / 2, 50);
+        text("Push your enter key!!！", width / 2, 80);
+
+        break;
+    }
+}
+
+void mouseReleased() {
+    if (state == 1) {
+        point++;
+    }
+}
+
+void keyPressed() {
+    if (key == ENTER && state == 2) {
+        state = 0;
+        timeStamp = elapsedTime;
+        time = elapsedTime - timeStamp;
+        point = 0;
+    }
+}
